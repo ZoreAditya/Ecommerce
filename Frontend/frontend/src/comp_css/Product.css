@@ -1,0 +1,234 @@
+/*.product-page {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 90vh;
+   
+    margin-bottom: 30px;
+    background-color: whitesmoke;
+}
+
+.filter-section {
+    margin-top: 15px;
+    
+    padding: 10px;
+    margin-right: 56px;
+    margin-left: 10px;
+    width: 18%;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+.filter-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.filter-section label {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.filter-section select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.product-list {
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    row-gap: 10px;
+}
+
+.product-card {
+
+    border: 2px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.product-image1 img {
+
+
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 5px;
+    max-width: 65%;
+    height: auto;
+}
+
+.product-info {
+
+}
+
+.product-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.product-price {
+    font-size: 25px;
+    color: green;
+    margin-top: 10px;
+}
+
+.product-info button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+
+.product-info button+button {
+    margin-left: 10px;
+
+}
+
+.product-info button:hover {
+    background-color: #2980b9;
+}
+
+*/
+
+.product-page {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 90vh;
+    margin-bottom: 30px;
+    background-color: whitesmoke;
+}
+
+.filter-section {
+    margin-top: 15px;
+    padding: 10px;
+    margin-right: 56px;
+    margin-left: 10px;
+    width: 18%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.filter-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.filter-section label {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.filter-section select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.product-list {
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    row-gap: 10px;
+}
+
+/* ------------ FIXED PART BELOW ------------ */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border: 2px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    border-radius: 3px;
+    padding: 15px;
+
+    min-height: 500px; /* Ensures all cards are same height */
+}
+.product-image1 {
+  width: 100%;
+  height: 180px; /* 👈 Fixed height for image box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.product-image1 img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* 👈 Keeps full image inside box */
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.product-price {
+    font-size: 25px;
+    color: green;
+    margin-top: 10px;
+}
+
+/* Wrapper for the buttons to push them to bottom */
+.product-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.product-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-buttons button:hover {
+    background-color: #2980b9;
+}
+
