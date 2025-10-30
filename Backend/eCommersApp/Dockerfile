@@ -1,12 +1,13 @@
-# Step 1: Use Maven to build the JAR
-FROM maven:3.9.4-eclipse-temurin-17 AS build
+# Step 1: Build the project using Maven and JDK 21
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Step 2: Run the built JAR
-FROM eclipse-temurin:17-jdk
+# Step 2: Run the JAR using JDK 21
+FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
