@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "REST API", version = "1.1"), security = {
 		@SecurityRequirement(name = "basicAuth"), @SecurityRequirement(name = "bearerToken") }, servers = {
-				@Server(url = "/", description = "Default Server URL")
+//				@Server(url = "/", d    escription = "Default Server URL")
 
 }
 )

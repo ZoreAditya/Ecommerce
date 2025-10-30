@@ -37,7 +37,7 @@ public class AppConfig {
                             cfg.setAllowedOriginPatterns(Collections.singletonList("https://eccomers96.netlify.app/"));
                             cfg.setAllowedOriginPatterns(Collections.singletonList("http://localhost:3000"));
                             cfg.setAllowedMethods(Collections.singletonList("*"));
-        
+
                             cfg.setAllowCredentials(true);
                             cfg.setAllowedHeaders(Collections.singletonList("*"));
                             cfg.setExposedHeaders(Arrays.asList("Authorization"));
@@ -54,6 +54,7 @@ public class AppConfig {
                             .requestMatchers(HttpMethod.DELETE, "/ecom/orders/users/**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/ecom/signIn", "/ecom/product-reviews/**","/ecom/products/**").permitAll()
 
+
                             .requestMatchers(
                                     HttpMethod.POST,
                                     "/ecom/product/**",
@@ -62,7 +63,7 @@ public class AppConfig {
                             ).hasRole("ADMIN")
                             .requestMatchers(
                                     HttpMethod.POST,
-                                    "/ecom/product/**",
+                                    "/ecom/products/**",
                                     "/ecom/product-reviews/**",
                                     "/ecom/customer-addresses/**",
                                     "/ecom/cart/**",
@@ -72,7 +73,7 @@ public class AppConfig {
                             .requestMatchers(
                                     HttpMethod.PUT,
                                     "/ecom/admin/**",
-                                    "/ecom/products/**"
+                                    "/ecom/product/**"
 
                             ).hasRole("ADMIN")
                             .requestMatchers(
@@ -86,7 +87,7 @@ public class AppConfig {
 
                             .requestMatchers(
                                     HttpMethod.DELETE,
-                                    "/ecom/products/**",
+                                    "/ecom/product/**",
                                     "/ecom/product-reviews/**",
                                     "/ecom/customer-addresses/delete/**",
 //                                    "/ecom/orders/users/**",
@@ -130,4 +131,5 @@ public class AppConfig {
 
 
 }
+
 
