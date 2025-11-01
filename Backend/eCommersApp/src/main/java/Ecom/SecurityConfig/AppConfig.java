@@ -34,7 +34,7 @@ public class AppConfig {
                             CorsConfiguration cfg = new CorsConfiguration();
 
                             cfg.setAllowedOriginPatterns(Collections.singletonList("*"));
-                            cfg.setAllowedOriginPatterns(Collections.singletonList("https://eccomers96.netlify.app/"));
+                            cfg.setAllowedOriginPatterns(Collections.singletonList("https://urbancarts.netlify.app/"));
                             cfg.setAllowedOriginPatterns(Collections.singletonList("http://localhost:3000"));
                             cfg.setAllowedMethods(Collections.singletonList("*"));
 
