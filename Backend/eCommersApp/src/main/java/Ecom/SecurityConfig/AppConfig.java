@@ -44,7 +44,7 @@ public class AppConfig {
                     .requestMatchers(HttpMethod.POST, "/ecom/admin").permitAll()
                     .requestMatchers(HttpMethod.POST, "/ecom/customers").permitAll()
                     .requestMatchers(HttpMethod.DELETE, "/ecom/orders/users/**").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/ecom/signIn", "/ecom/product-reviews/**", "/ecom/products/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/ecom/product-reviews/**", "/ecom/products/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/ecom/product/**", "/ecom/order-shippers/**").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.POST, "/ecom/products/**", "/ecom/product-reviews/**",
                             "/ecom/customer-addresses/**", "/ecom/cart/**",
