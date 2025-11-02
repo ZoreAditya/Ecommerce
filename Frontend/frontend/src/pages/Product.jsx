@@ -1,3 +1,5 @@
+
+
 // import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
@@ -10,32 +12,34 @@
 //   const [selectedCategory, setSelectedCategory] = useState("All");
 //   const [priceOrder, setPriceOrder] = useState("All");
 //   const [nameSearch, setNameSearch] = useState("");
-//   let userid = localStorage.getItem("userid");
+
+//   const userid = localStorage.getItem("userid");
 
 //   const filterProducts = (category, priceOrder, nameSearch, data) => {
-//     let filteredProducts = data;
+//     let filtered = [...data];
 
 //     if (category !== "All") {
-//       filteredProducts = filteredProducts.filter(
-//         (product) =>  product.category &&
-//         product.category.toLowerCase() === category.toLowerCase()
+//       filtered = filtered.filter(
+//         (product) =>
+//           product.category &&
+//           product.category.toLowerCase() === category.toLowerCase()
 //       );
 //     }
-    
+
 //     if (priceOrder === "LowToHigh") {
-//       filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
+//       filtered.sort((a, b) => a.price - b.price);
 //     } else if (priceOrder === "HighToLow") {
-//       filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
+//       filtered.sort((a, b) => b.price - a.price);
 //     }
 
 //     if (nameSearch !== "") {
 //       const searchQuery = nameSearch.toLowerCase();
-//       filteredProducts = filteredProducts.filter((product) =>
+//       filtered = filtered.filter((product) =>
 //         product.name.toLowerCase().includes(searchQuery)
 //       );
 //     }
 
-//     setFilteredProducts(filteredProducts);
+//     setFilteredProducts(filtered);
 //   };
 
 //   useEffect(() => {
@@ -43,7 +47,12 @@
 //       .get("http://127.0.0.1:9090/ecom/products/all")
 //       .then((response) => {
 //         setProducts(response.data);
-//         filterProducts(selectedCategory, priceOrder, nameSearch, response.data);
+//         filterProducts(
+//           selectedCategory,
+//           priceOrder,
+//           nameSearch,
+//           response.data
+//         );
 //       })
 //       .catch((error) => {
 //         console.error("Error fetching data from the API: ", error);
@@ -55,63 +64,56 @@
 //       .post(`/ecom/cart/add-product?userId=${userid}&productId=${productid}`)
 //       .then((response) => {
 //         localStorage.setItem("cartid", response.data.cartId);
-//         alert("product added to Cart");
+//         alert("Product added to Cart");
 //       })
 //       .catch((error) => {
 //         if (error.response && error.response.data) {
 //           alert(error.response.data.message);
 //         } else {
-//           alert("Error To adding Product . Please try again later.");
-//           console.error("Error registering:", error);
+//           alert("Error adding product. Please try again later.");
+//           console.error("Error:", error);
 //         }
 //       });
 //   };
 
 //   return (
 //     <div className="product-page">
+//       {/* Filter Section */}
 //       <div className="filter-section">
 //         <h2>Filter</h2>
 //         <hr />
 //         <label>Category</label>
 //         <select
 //           value={selectedCategory}
-//           onChange={(e) => {
-//             setSelectedCategory(e.target.value);
-//           }}
+//           onChange={(e) => setSelectedCategory(e.target.value)}
 //         >
 //           <option value="All">All</option>
 //           <option value="vegetables">Vegetable</option>
 //           <option value="fruits">Fruits</option>
 //           <option value="electronics">Electronic</option>
-//           <option value="gadgets">Gaggets</option>
+//           <option value="gadgets">Gadgets</option>
 //         </select>
-//         <br />
-//         <label>Price:</label>
-//         <div>
-//           <select
-//             value={priceOrder}
-//             onChange={(e) => {
-//               setPriceOrder(e.target.value);
-//             }}
-//           >
-//             <option value="All">All</option>
-//             <option value="LowToHigh">Low to High</option>
-//             <option value="HighToLow">High To Low</option>
-//           </select>
-//         </div>
 
-//         <br />
-//         <div>
-//           <h4>By Name</h4>
-//           <input
-//             type="text"
-//             placeholder="Search by name"
-//             value={nameSearch}
-//             onChange={(e) => setNameSearch(e.target.value)}
-//           />
-//         </div>
+//         <label>Price:</label>
+//         <select
+//           value={priceOrder}
+//           onChange={(e) => setPriceOrder(e.target.value)}
+//         >
+//           <option value="All">All</option>
+//           <option value="LowToHigh">Low to High</option>
+//           <option value="HighToLow">High To Low</option>
+//         </select>
+
+//         <h4>By Name</h4>
+//         <input
+//           type="text"
+//           placeholder="Search by name"
+//           value={nameSearch}
+//           onChange={(e) => setNameSearch(e.target.value)}
+//         />
 //       </div>
 
+//       {/* Product List */}
 //       <div className="product-list">
 //         {filteredProducts.length === 0 ? (
 //           <h1
@@ -122,7 +124,7 @@
 //               width: "800px",
 //             }}
 //           >
-//             Product Not found ....
+//             Product Not Found...
 //           </h1>
 //         ) : (
 //           filteredProducts.map((product) => (
@@ -133,22 +135,22 @@
 //               <div className="product-info">
 //                 <h2>{product.name}</h2>
 //                 <p>
-//                   <strong>Category :</strong> {product.category}
+//                   <strong>Category:</strong> {product.category}
 //                 </p>
 //                 <p>
-//                   <strong>Description: </strong>
+//                   <strong>Description:</strong>{" "}
 //                   {product.description.substring(0, 25)}
 //                 </p>
 //                 <h2 className="product-price">Price: ₹ {product.price}</h2>
 //                 <p>
-//                   {" "}
-//                   <strong>Rating :</strong>
+//                   <strong>Rating:</strong>{" "}
 //                   {product.reviews.length === 0
 //                     ? "Not Available"
 //                     : product.reviews[0].rating}
 //                 </p>
 
-//                 <div>
+//                 {/* Buttons aligned at the bottom */}
+//                 <div className="product-buttons">
 //                   <button onClick={() => addProductToCart(product.productId)}>
 //                     Add to Cart
 //                   </button>
@@ -173,12 +175,13 @@
 // export default Product;
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../comp_css/Product.css";
 import api from "../Router/api";
 
 const Product = () => {
+  const location = useLocation();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -205,31 +208,45 @@ const Product = () => {
     }
 
     if (nameSearch !== "") {
-      const searchQuery = nameSearch.toLowerCase();
+      const search = nameSearch.toLowerCase();
       filtered = filtered.filter((product) =>
-        product.name.toLowerCase().includes(searchQuery)
+        product.name.toLowerCase().includes(search)
       );
     }
 
     setFilteredProducts(filtered);
   };
-
+// .get("http://127.0.0.1:9090/ecom/products/all")
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:9090/ecom/products/all")
+      .get("https://ecommerce-3-kky3.onrender.com/ecom/products/all")
       .then((response) => {
         setProducts(response.data);
-        filterProducts(
-          selectedCategory,
-          priceOrder,
-          nameSearch,
-          response.data
-        );
+        filterProducts(selectedCategory, priceOrder, nameSearch, response.data);
       })
       .catch((error) => {
         console.error("Error fetching data from the API: ", error);
       });
   }, [selectedCategory, priceOrder, nameSearch]);
+
+  // --------------------------
+  // NEW: Watch Navbar input automatically
+  // --------------------------
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Try to find Navbar search input in DOM
+      const navbarInput = document.querySelector(".search-bar input");
+      if (navbarInput) {
+        const value = navbarInput.value;
+        if (value !== nameSearch) {
+          setNameSearch(value); // update state, triggers filtering
+        }
+      }
+    }, 200); // check every 200ms
+
+    return () => clearInterval(interval);
+  }, [nameSearch]);
+  // --------------------------
 
   const addProductToCart = (productid) => {
     api
@@ -273,7 +290,7 @@ const Product = () => {
         >
           <option value="All">All</option>
           <option value="LowToHigh">Low to High</option>
-          <option value="HighToLow">High To Low</option>
+          <option value="HighToLow">High to Low</option>
         </select>
 
         <h4>By Name</h4>
@@ -321,7 +338,6 @@ const Product = () => {
                     : product.reviews[0].rating}
                 </p>
 
-                {/* Buttons aligned at the bottom */}
                 <div className="product-buttons">
                   <button onClick={() => addProductToCart(product.productId)}>
                     Add to Cart
