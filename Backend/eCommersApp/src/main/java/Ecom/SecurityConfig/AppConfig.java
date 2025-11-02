@@ -61,7 +61,7 @@ public class AppConfig {
                             "/ecom/customer-addresses/**", "/ecom/cart/products/**",
                             "/ecom/orders/**", "/ecom/order-shippers",
                             "/ecom/order-payments/**").hasAnyRole("ADMIN", "USER")
-                    .requestMatchers("/swagger-ui*/**", "/v3/api-docs/**").permitAll()
+                    .requestMatchers("/ecom/signIn", "/swagger-ui*/**", "/v3/api-docs/**").permitAll()
                     .anyRequest().authenticated()
             )
             .csrf(AbstractHttpConfigurer::disable)
