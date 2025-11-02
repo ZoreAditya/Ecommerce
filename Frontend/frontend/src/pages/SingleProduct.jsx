@@ -9,10 +9,11 @@ const SingleProduct = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const userid = localStorage.getItem("userid");
+      // .get(`http://127.0.0.1:9090/ecom/products/${productId}`)
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:9090/ecom/products/${productId}`)
+      .get(`https://ecommerce-3-kky3.onrender.com/ecom/products/${productId}`)
       .then((response) => {
         setProduct(response.data);
       })
