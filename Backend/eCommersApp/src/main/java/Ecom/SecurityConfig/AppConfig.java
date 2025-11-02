@@ -1,7 +1,6 @@
 package Ecom.SecurityConfig;
 
 import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,7 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-
 import jakarta.servlet.http.HttpServletRequest;
 
 @Configuration
@@ -44,7 +42,7 @@ public class AppConfig {
                     .requestMatchers(HttpMethod.POST, "/ecom/admin").permitAll()
                     .requestMatchers(HttpMethod.POST, "/ecom/customers").permitAll()
                     .requestMatchers(HttpMethod.DELETE, "/ecom/orders/users/**").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/ecom/product-reviews/**", "/ecom/products/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/ecom/signIn", "/ecom/product-reviews/**", "/ecom/products/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/ecom/product/**", "/ecom/order-shippers/**").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.POST, "/ecom/products/**", "/ecom/product-reviews/**",
                             "/ecom/customer-addresses/**", "/ecom/cart/**",
@@ -61,15 +59,15 @@ public class AppConfig {
                             "/ecom/customer-addresses/**", "/ecom/cart/products/**",
                             "/ecom/orders/**", "/ecom/order-shippers",
                             "/ecom/order-payments/**").hasAnyRole("ADMIN", "USER")
-                    .requestMatchers("/ecom/signIn", "/swagger-ui*/**", "/v3/api-docs/**").permitAll()
+                    .requestMatchers("/swagger-ui*/**", "/v3/api-docs/**").permitAll()
                     .anyRequest().authenticated()
             )
             .csrf(AbstractHttpConfigurer::disable)
-            .httpBasic(AbstractHttpConfigurer::disable)
+           
+            .httpBasic(httpSecurity -> {})
             .formLogin(AbstractHttpConfigurer::disable)
             .addFilterAfter(new JwtTokenGeneratorFilter(), BasicAuthenticationFilter.class)
-            .addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class)
-            .httpBasic(httpSecurity -> httpSecurity.disable());
+            .addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class);
 
         return http.build();
     }
