@@ -23,7 +23,7 @@ const OrderDetails = () => {
  
   const handeldeleteOrder = (orderId) => {
     axios
-      .delete(`http://127.0.0.1:9090/ecom/orders/users/${userId}/${orderId}`)
+      .delete(`https://ecommerce-3-kky3.onrender.com/ecom/orders/users/${userId}/${orderId}`)
       .then((response) => {
         alert(response.data);
 
