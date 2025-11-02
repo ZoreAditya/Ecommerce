@@ -26,7 +26,7 @@ const AdminLogin = () => {
 
     try {
       const authHeader = `Basic ${btoa(`${form.username}:${form.password}`)}`;
-      const response = await axios.get("http://localhost:9090/ecom/signIn", {
+      const response = await axios.get("https://ecommerce-3-kky3.onrender.com/ecom/signIn", {
         headers: {
           Authorization: authHeader,
         },
