@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:9090',
+  baseURL: 'https://ecommerce-3-kky3.onrender.com',
 });
 
 api.interceptors.request.use(
