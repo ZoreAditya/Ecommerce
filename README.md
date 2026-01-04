@@ -22,6 +22,8 @@ An eCommerce Application backend with Java Spring Boot with frontend using the R
 - BCrypt
 - Maven
 - Axios
+- Thymeleaf
+- Spring Boot Mail
 
 
 
