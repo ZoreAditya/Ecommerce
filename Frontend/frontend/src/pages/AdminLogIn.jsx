@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../comp_css/Login.css";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../Router/api";
 
 const formData = {
   username: "",
@@ -26,7 +26,7 @@ const AdminLogin = () => {
 
     try {
       const authHeader = `Basic ${btoa(`${form.username}:${form.password}`)}`;
-      const response = await axios.get("https://ecommerce-3-kky3.onrender.com/ecom/signIn", {
+      const response = await api.get("/ecom/signIn", {
         headers: {
           Authorization: authHeader,
         },
@@ -86,6 +86,20 @@ const AdminLogin = () => {
             <div className="form-group">
               <input type="submit" value="Login" />
             </div>
+            <div style={{ textAlign: "center", marginTop: "12px" }}>
+               <span style={{ color: "#555" }}>Not an admin? </span>
+                <Link
+                to="/login"
+                style={{
+                color: "#0d6efd",
+                fontWeight: "600",
+                textDecoration: "none",
+    }}
+  >
+    Login as User
+  </Link>
+</div>
+
           </form>
         </div>
       </div>

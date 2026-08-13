@@ -1,6 +1,8 @@
 package Ecom.SecurityConfig;
 
+import java.util.Arrays;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,6 +20,9 @@ import jakarta.servlet.http.HttpServletRequest;
 @Configuration
 public class AppConfig {
 
+    @Value("${APP_CORS_ALLOWED_ORIGINS:https://urbancarts.netlify.app,http://localhost:3000}")
+    private String allowedOrigins;
+
     @Bean
     public SecurityFilterChain springSecurityConfiguration(HttpSecurity http) throws Exception {
 
@@ -27,10 +32,10 @@ public class AppConfig {
                 @Override
                 public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                     CorsConfiguration cfg = new CorsConfiguration();
-                    cfg.setAllowedOriginPatterns(List.of(
-                            "https://urbancarts.netlify.app",
-                            "http://localhost:3000"
-                    ));
+                    cfg.setAllowedOriginPatterns(Arrays.stream(allowedOrigins.split(","))
+                            .map(String::trim)
+                            .filter(origin -> !origin.isEmpty())
+                            .toList());
                     cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     cfg.setAllowCredentials(true);
                     cfg.setAllowedHeaders(List.of("*"));

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../comp_css/Login.css";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../Router/api";
 import loginbg from "../picture/loginbg1.webp";
 
 const bg = {
@@ -40,7 +40,7 @@ const Login = () => {
 
     try {
       const authHeader = `Basic ${btoa(`${form.username}:${form.password}`)}`;
-      const response = await axios.get("https://ecommerce-3-kky3.onrender.com/ecom/signIn", {
+      const response = await api.get("/ecom/signIn", {
         headers: {
           Authorization: authHeader,
         },
